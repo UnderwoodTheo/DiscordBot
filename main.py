@@ -1,12 +1,6 @@
 from datetime import datetime
 import string
-from xmlrpc.client import ResponseError
-from aiohttp import request
-from matplotlib import projections
-from matplotlib.style import available
 import requests
-import json
-import io
 import unidecode
 import numpy as np
 import datetime

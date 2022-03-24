@@ -2,8 +2,6 @@ import requests
 import unidecode
 import pymongo
 import certifi
-import json
-
 
 mongo_uri = 'mongodb+srv://tunderwood:JSmSGadJgeAlRW5n@cluster0.bzqiy.mongodb.net/chatbot?retryWrites=true&w=majority'
 mongo_db = 'chatbot'
