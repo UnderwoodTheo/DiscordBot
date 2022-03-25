@@ -5,7 +5,7 @@ import unidecode
 import numpy as np
 import datetime
 
-apiKey = 'RGAPI-f87d589e-8753-48b9-a0ef-2e5d4866bb03'
+apiKey = 'RGAPI-0536f14f-74ab-4f01-bbea-0757c9bb643a'
 
 
 def query(request):
