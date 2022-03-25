@@ -32,6 +32,7 @@ async def help(ctx):
     embed.add_field(title='!status', value='Know if there are issues of the server')
     embed.add_field(title='!summoner <summonerName>', value='Profile of a player')
     embed.add_field(title='!weekly', value='List weekly free champions')
+    await ctx.send(embed=embed)
 
 @bot.command('hello')
 async def hello(ctx):
