@@ -5,7 +5,6 @@ from discord.ext import commands
 import re
 from dotenv import load_dotenv
 import os
-
 import numpy as np
 
 bot = commands.Bot(command_prefix='!')
@@ -13,6 +12,26 @@ bot = commands.Bot(command_prefix='!')
 @bot.event
 async def on_ready():
     print('Bot is ready')
+
+@bot.command('help')
+async def help(ctx):
+    embed = discord.Embed(title='Commands', description="Here are the commands I can answer to. If one of them does not work, it's probably that the api key is not valid anymore. Ask the boss to update it.", color=discord.Color.green())
+    embed.set_thumbnail(url='https://www.mobafire.com/images/champion/square/singed.png')
+    embed.add_field(title='Available every time')
+    embed.add_field(title='!champ <championName>', value='Details about any champion')
+    embed.add_field(title='!champions', value='List available champions by role')
+    embed.add_field(title='!hello', value='Greet me')
+    embed.add_field(title='!help', value='List the commands')
+    embed.add_field(title='!items', value='List in-game items by id, then pick one for more details')
+    embed.add_field(title='!ranks', value='Ranks you can reach in ranked games')
+    embed.add_field(title='!summonerSpells', value='Details about a specific summoner spell')
+    embed.add_field(title='!version', value='Current version')
+    embed.add_field(title='Requiring the api key to be valid')
+    embed.add_field(title='!chest <championName>', value='Know if a chest is granted on a champion')
+    embed.add_field(title='!history <summonerName>', value='Last 3 games of a player')
+    embed.add_field(title='!status', value='Know if there are issues of the server')
+    embed.add_field(title='!summoner <summonerName>', value='Profile of a player')
+    embed.add_field(title='!weekly', value='List weekly free champions')
 
 @bot.command('hello')
 async def hello(ctx):
@@ -139,7 +158,7 @@ async def summoner(ctx, name: str):
             embedMasteries.add_field(name=c[0], value=f'{c[1]} pts')
         await ctx.send(embed=embedMasteries)
     except:
-        await ctx.send('This summoner does not exist')
+        await ctx.send('This summoner does not exist or the boss needs to update the API key')
 
 @bot.command('status')
 async def status(ctx):
