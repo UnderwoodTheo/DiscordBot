@@ -13,7 +13,7 @@ bot = commands.Bot(command_prefix='!')
 async def on_ready():
     print('Bot is ready')
 
-@bot.command('help')
+@bot.command('cmds')
 async def help(ctx):
     embed = discord.Embed(title='Commands', description="Here are the commands I can answer to. If one of them does not work, it's probably that the api key is not valid anymore. Ask the boss to update it.", color=discord.Color.green())
     embed.set_thumbnail(url='https://www.mobafire.com/images/champion/square/singed.png')
