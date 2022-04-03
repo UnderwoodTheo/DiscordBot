@@ -6,12 +6,31 @@ import re
 from dotenv import load_dotenv
 import os
 import numpy as np
+import time
+import requests
 
 bot = commands.Bot(command_prefix='!')
 
 @bot.event
 async def on_ready():
     print('Bot is ready')
+
+@bot.command('p')
+async def activePlayers(ctx):
+    rep = requests.get('https://euw1.api.riotgames.com/lol/league/v4/masterleagues/by-queue/RANKED_SOLO_5x5?api_key=RGAPI-f01061d4-1004-4cc4-8270-1f1a56fe560b')
+    data = rep.json()['entries']
+    for i in range(len(data)):
+        if data[i]['summonerName'] == 'F9 Wayzix':
+            index = i 
+    filtered = data[index-50:index+49]
+    c = 0
+    for p in filtered:
+        game = requests.get(f'https://euw1.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/{p["summonerId"]}?api_key=RGAPI-f01061d4-1004-4cc4-8270-1f1a56fe560b')
+        if 'gameId' in game.json().keys():
+            c += 1
+    await ctx.send(c)
+    time.sleep(120)
+    return await activePlayers(ctx)
 
 @bot.command('cmds')
 async def help(ctx):
